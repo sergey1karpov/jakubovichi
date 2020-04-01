@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index() {
-        return view('index');
+    public function index(Post $post) {
+        $posts = Post::all();
+        return view('index', compact('posts'));
     }
 
     public function about() {
@@ -21,4 +23,10 @@ class MainController extends Controller
     public function contacts() {
         return view('contacts');
     }
+
+//    public function calculate(Request $request) {
+//        $number = $request->number;
+//        $res = round($number/1.68,2);
+//        return view('calc', compact('res'));
+//    }
 }

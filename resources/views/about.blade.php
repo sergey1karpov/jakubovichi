@@ -24,7 +24,9 @@
             сей день ведет эту передачу.</p>
         <p class="ml-3">В 2021 году будет уже 30 лет, как крутится барабан, и в честь этого события и были придуманы
             ЯКубовичи.</p>
+        <hr>
     </div>
+
     <div class="col-lg-6 content2_blok">
         <h2 class="content2__text text-center text8 mb-5 display-4">Эйфелева Башня</h2>
         <img src="{{asset('img/2-2.jpg')}}" width="500" class="mx-auto d-block rounded">
