@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use User;
-use Comment;
+use App\Comment;
 
 class Post extends Model
 {
-
+    public function comment() {
+        return $this->hasMany(Comment::class);
+    }
 }

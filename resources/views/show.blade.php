@@ -32,10 +32,12 @@
         <h3>Комментарии</h3>
     </div>
 </div>
-@dump($post->id)
+
 <div class="row mt-3">
     <div class="col-12">
-        <h4>Путин | 24.42.24</h4>
-        <h4>тролололлололоололлололололололоо</h4>
+        @foreach($post->comment as $comment)
+        <h4>{{$comment->author_name}} | {{$comment->created_at->diffForHumans()}}</h4>
+        <h4>{{$comment->comment}}</h4>
+        @endforeach
     </div>
 </div>
