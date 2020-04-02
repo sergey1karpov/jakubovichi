@@ -9,9 +9,10 @@
         <hr>
         <img src="{{$post->img_link ?? $post->img}}" class="img-fluid mt-3 mb-3 ml-3 mr-5" alt="Cinque Terre">
         <p class="mt-3 mb-3 ml-3 mr-5">{{$post->text}}</p>
-        <p class="blockquote-footer mt-3 mb-3 ml-3 mr-5">21.13.2019 | Автор: <cite
-                title="Название источника">Ярмольник Л. <abbr title="Хотя лучше не надо" class="initialism">Читать
-                    дальше...</abbr></cite></p>
+        <p class="blockquote-footer mt-3 mb-3 ml-3 mr-5">{{$post->created_at}} | Автор:
+            <cite title="Название источника">Ярмольник Л. |</cite>
+            <a href="{{route('showPost', ['id' => $post->id])}}">Читать новость про Леонида Аркадиевича</a>
+        </p>
         @endforeach
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12 mt-4">

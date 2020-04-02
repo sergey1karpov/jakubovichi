@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Post;
 use User;
-use Comment;
 
-class Post extends Model
+class Comment extends Model
 {
+
 
 }

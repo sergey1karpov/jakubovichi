@@ -24,6 +24,11 @@ class MainController extends Controller
         return view('contacts');
     }
 
+    public function show($id) {
+        $post = Post::find($id);
+        return view('show', compact('post'));
+    }
+
 //    public function calculate(Request $request) {
 //        $number = $request->number;
 //        $res = round($number/1.68,2);
