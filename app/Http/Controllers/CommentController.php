@@ -19,6 +19,14 @@ class CommentController extends Controller
 
         return redirect()->back();
     }
+
+    public function delete($id) {
+            $comment = Comment::find($id);
+            if(Auth::user()->id == $comment->user_id) {
+                $comment->delete();
+                return redirect()->back()->with('success', 'Комментарий удален');
+            } return redirect()->back()->with('success', 'sosi');
+    }
 }
 
 

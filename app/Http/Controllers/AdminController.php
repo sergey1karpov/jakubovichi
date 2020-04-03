@@ -10,12 +10,14 @@ class AdminController extends Controller
 {
 
     public function __construct() {
-        return $this->middleware('auth');
+        $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
 
     public function index()
     {
         $posts = Post::all();
+
         return view('home', compact('posts'));
     }
 
@@ -28,6 +30,7 @@ class AdminController extends Controller
     {
         $post = new Post();
         $post->title = $request->title;
+        $post->short_text = $request->short_text;
         $post->img = $request->img;
         $post->img_link = $request->img_link;
         $post->text = $request->text;
@@ -53,6 +56,7 @@ class AdminController extends Controller
     {
         $post = Post::find($id);
         $post->title = $request->title;
+        $post->short_text = $request->short_text;
         $post->img = $request->img;
         $post->img_link = $request->img_link;
         $post->text = $request->text;

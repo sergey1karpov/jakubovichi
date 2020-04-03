@@ -20,7 +20,12 @@
             <small id="emailHelp" class="form-text text-muted">Сюда вставляй ссылку на картинку</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">text</label>
+            <label for="exampleInputEmail1">Short text</label>
+            <textarea name="short_text" class="form-control"></textarea>
+            <small id="emailHelp" class="form-text text-muted">Описание для главной страницы 255 символов</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Full text</label>
             <textarea name="text" class="form-control"></textarea>
             <small id="emailHelp" class="form-text text-muted">Весь бред своего воспаленного мозга пиши здесь</small>
         </div>

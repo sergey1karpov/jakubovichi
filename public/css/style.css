@@ -42,9 +42,7 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 60px;
-}
+
 
 .footer {
     position: absolute;
@@ -81,4 +79,37 @@ body {
 .contact-form .right .form-control::placeholder {
     color: #888;
     font-size: 16px;
+}
+
+/*Footer*/
+
+a:hover{
+    text-decoration:none;
+}
+.section-padding {
+    padding: 5px 0;
+}
+.bottom {
+    background-color: #f97300;
+}
+.bottom .copyright {
+    color: #f4f4f4;
+    font-weight: 600;
+}
+.copyright a {
+    color: #f4f4f4;
+    margin-left: 3px;
+    padding-right: 3px;
+}
+.bottom p {
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.copyright p span {
+    color: #f4f4f4;
+}
+.bottom .copyright p, .bottom .copyright a:hover{
+    color: #f4f4f4;
 }

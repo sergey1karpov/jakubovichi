@@ -11,79 +11,116 @@
     <title>ЯКубовичи</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg  ">
-    <a class="navbar-brand" href="{{route('index')}}">#ЯИЗМЕРЯЮВЯКУБОВИЧАХ</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav mr-">
-            <li class="nav-item">
-                <a class="nav-link" data-value="about" href="{{route('about')}}">О Нас</a> </li>
-            <li class="nav-item">
-                <a class="nav-link " data-value="team" href="{{route('team')}}">Наша команда</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " data-value="contacys" href="{{route('contacts')}}">Контакты</a> </li>
-        </ul>
-    </div>
-    <ul class="navbar-nav ml-auto">
-        <!-- Authentication Links -->
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @if (Route::has('register'))
+<div class="container"></div>
+    <nav class="navbar navbar-expand-lg  ">
+        <a class="navbar-brand" href="{{route('index')}}">#ЯИЗМЕРЯЮВЯКУБОВИЧАХ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" data-value="about" href="{{route('about')}}">О Нас</a> </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="team" href="{{route('team')}}">Наша команда</a>
                 </li>
-            @endif
-        @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="convert" href="{{route('calculate')}}">Конвертер</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contacys" href="{{route('contacts')}}">Контакты</a> </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <a class="dropdown-item" href="{{ route('home.index') }}">
-                        {{ __('Home') }}
-                    </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('home.index') }}">
+                                {{ __('Home') }}
+                            </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid">
+    <div class="col mt-5">
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{$error}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </li>
-        @endguest
-    </ul>
-</nav>
+            @endforeach
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    </div>
+    @yield('content')
+</div>
 
-@yield('content')
+<div class="">
+    <div class="bottom section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center mb-4">
+                    <div class="copyright">
+                        <h3 class="display-4" style="font-size: 17px">Вы можете сделать Леониду Аркадиевичу и нам очень приятно...
+                            Нет, это не то о чем вы подумали. Достаточно всего лишь подписаться на наши соц. сети и
+                        вы будите в курсе всех новостей.</h3>
+                        <div class="mt-3">
+                            <a href="#"><img src="{{asset('img/vk.jpg')}}" class="img-fluid" width="43"></a>
+                            <a href="#"><img src="{{asset('img/fb.jpg')}}" class="img-fluid" width="43"></a>
+                            <a href="#"><img src="{{asset('img/inst.jpg')}}" class="img-fluid" width="43"></a>
+                            <a href="#"><img src="{{asset('img/teleg.jpg')}}" class="img-fluid" width="43"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center mb-4">
+                    <div class="copyright">
+                        <h3 class="display-4" style="font-size: 16px">Все права защищенны ОМОНОМ</h3>
+                        <p><img src="{{asset('img/1.png')}}" class="img-fluid" width="235"></p>
 
-<nav class="navbar fixed-bottom navbar-light br-light footer ">
-    <ul class="navbar-nav ml-1 ">
-        <li class="nav-item ">
-            <a class="nav-link" data-value="about" href="about_us.html">О Нас</a> </li>
-        <li class="nav-item ">
-            <a class="nav-link " data-value="team" href="team.html">Наша команда</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link " data-value="contacts" href="contacts.html">Контакты</a> </li>
-    </ul>
-    <form class="form-inline ">
-        <h1 class="footer_k mr-1 ">
-            © 2019 Все права защищены ОМОНОМ. <br>
-            <img src="{{asset('img/1.png')}}" class="img-fluid" width="220">
-        </h1>
-    </form>
-</nav>
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

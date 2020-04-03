@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use Illuminate\Http\Request;
+use App\Mods\Calculate;
 
 class MainController extends Controller
 {
     public function index(Post $post) {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->simplePaginate(2);
         return view('index', compact('posts'));
     }
 
@@ -29,9 +31,9 @@ class MainController extends Controller
         return view('show', compact('post'));
     }
 
-//    public function calculate(Request $request) {
-//        $number = $request->number;
-//        $res = round($number/1.68,2);
-//        return view('calc', compact('res'));
-//    }
+    public function calculate(Request $request) {
+        $res = Calculate::calc($request);
+        return view('convert', compact('res'));
+    }
+
 }
