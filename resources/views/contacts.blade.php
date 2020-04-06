@@ -2,12 +2,11 @@
 
 @section('content')
 
-<img src="{{asset('img/qwe.png')}}" class="img-fluid mt-3 mb-3 ml-3 mr-5" alt="Cinque Terre">
-
 <div class="contact-form ">
     <div class="container ">
         <form>
             <div class="row justify-content-center">
+                <img src="{{asset('img/kill.png')}}" class="img-fluid mt-3 mb-3 ml-3 mr-5" alt="Cinque Terre">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h1 class="">Напишите нам</h1>
                 </div>

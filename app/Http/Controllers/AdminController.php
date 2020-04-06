@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddPostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class AdminController extends Controller
         return view('admin.addPost');
     }
 
-    public function store(Request $request)
+    public function store(AddPostRequest $request)
     {
         $post = new Post();
         $post->title = $request->title;
@@ -52,7 +53,7 @@ class AdminController extends Controller
         return view('admin.editPost', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AddPostRequest $request, $id)
     {
         $post = Post::find($id);
         $post->title = $request->title;
