@@ -6,6 +6,7 @@ use App\Http\Requests\AddPostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -32,10 +33,15 @@ class AdminController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->short_text = $request->short_text;
-        $post->img = $request->img;
         $post->img_link = $request->img_link;
         $post->text = $request->text;
         $post->user_id = Auth::user()->id;
+
+        if($request->file('img')) {
+            $path = Storage::putFile('public', $request->file('img'));
+            $url = Storage::url($path);
+            $post->img = $url;
+        }
 
         $post->save();
 

@@ -24,9 +24,9 @@ class AddPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required | min: 50 | max: 255',
-            'short_text' => 'required | min: 50 | max: 255',
-            'full_text' => 'required | min: 50 | max: 2000'
+            'title' => 'required | min: 25 | max: 255',
+            'short_text' => 'required | min: 25 | max: 255',
+            'text' => 'required | min: 50 | max: 2000',
         ];
     }
 }
